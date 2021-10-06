@@ -12,14 +12,14 @@ import { green } from '@material-ui/core/colors'
 const ColorButton = withStyles(theme => ({
   root: {
     color: '#fff',
-    backgroundColor: green[700],
+    backgroundColor: green[500],
     '&:hover': {
-      backgroundColor: green[500]
+      backgroundColor: green[700]
     }
   }
 }))(Button)
 
-export class UserLogin extends Component {
+export class ColetaLogin extends Component {
   render() {
     return (
       <div>
@@ -32,7 +32,7 @@ export class UserLogin extends Component {
                 component="h1"
                 variant="h6"
               >
-                COLETAR LAGOS USER
+                COLETAR LAGOS COLETA SELETIVA
               </Typography>
             </div>
 
@@ -69,7 +69,7 @@ export class UserLogin extends Component {
               >
                 Entrar
               </Button>
-              <Link href="/registeruser">
+              <Link href="/registercoleta">
                 <ColorButton
                   type="button"
                   variant="contained"
@@ -91,4 +91,4 @@ const mapStateToProps = state => ({})
 
 const mapDispatchToProps = dispatch => ({})
 
-export default connect(mapStateToProps, mapDispatchToProps)(UserLogin)
+export default connect(mapStateToProps, mapDispatchToProps)(ColetaLogin)
