@@ -1,14 +1,27 @@
 import React, { Suspense, lazy } from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import ProgressBar from './config/components/circularprogress/ProgressBar'
 
-const login = lazy(() => import('./pages/UserLogin.js'))
+const loginuser = lazy(() => import('./pages/UserLogin.js'))
+const logincoleta = lazy(() => import('./pages/ColetaLogin.js'))
+const registeruser = lazy(() => import('./pages/UserRegister.js'))
+const registercoleta = lazy(() => import('./pages/ColetaRegister.js'))
 
 const Routes = () => (
   <Router>
-    <Suspense fallback={<div></div>}>
+    <Suspense
+      fallback={
+        <div className="mt-5 pt-5">
+          <ProgressBar />
+        </div>
+      }
+    >
       <Switch>
-        <Route path="/login" component={login} />
-        <Route path="/" component={login} />
+        <Route path="/loginuser" component={loginuser} />
+        <Route path="/logincoleta" component={logincoleta} />
+        <Route path="/registeruser" component={registeruser} />
+        <Route path="/registercoleta" component={registercoleta} />
+        <Route exact path="/" component={loginuser} />
       </Switch>
     </Suspense>
   </Router>
