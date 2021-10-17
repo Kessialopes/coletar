@@ -5,6 +5,7 @@ import { createTheme, ThemeProvider } from '@material-ui/core/styles'
 
 import Routes from './routes.js'
 import './css/dashboard.css'
+import NavBar from './config/components/menubar/index'
 
 const theme = createTheme({
   palette: {
@@ -19,6 +20,7 @@ function App() {
     <Provider store={store}>
       <ThemeProvider theme={theme}>
         <Routes />
+        <NavBar />
       </ThemeProvider>
     </Provider>
   )
