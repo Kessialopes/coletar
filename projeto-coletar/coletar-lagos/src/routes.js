@@ -6,6 +6,7 @@ const loginuser = lazy(() => import('./pages/UserLogin.js'))
 const logincoleta = lazy(() => import('./pages/ColetaLogin.js'))
 const registeruser = lazy(() => import('./pages/UserRegister.js'))
 const registercoleta = lazy(() => import('./pages/ColetaRegister.js'))
+const home = lazy(() => import('./pages/Home.js'))
 
 const Routes = () => (
   <Router>
@@ -21,7 +22,7 @@ const Routes = () => (
         <Route path="/logincoleta" component={logincoleta} />
         <Route path="/registeruser" component={registeruser} />
         <Route path="/registercoleta" component={registercoleta} />
-        <Route exact path="/" component={loginuser} />
+        <Route exact path="/" component={home} />
       </Switch>
     </Suspense>
   </Router>
