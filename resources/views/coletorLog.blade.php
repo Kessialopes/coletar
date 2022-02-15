@@ -4,51 +4,30 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <style>
-            .row{margin-top: 10%;}
-            .align-center{margin: 25%;}
+            
         </style>
-        <title>Login de Coletor</title>
+        <title>Login | Coleta Lagos</title>
     </head>
     <body>
        <section>
          <div class="container">
-            <div class="row">  
-                <div class="col-md-6 offset-md-3">
-                    @if($errors->any())
-                     <div class="alert alert-danger">
-                        <ul>
-                            @foreach($errors->all() as $error)
-                                <li>{{$error}}</li>
-                            @endforeach
-                        </ul> 
-                     </div>
-                    @endif
-                    @if(session('danger'))
-                        <div class="alert alert-danger">
-                         {{session('danger')}}   
-                        </div>
-                    @endif
-                    <form method="post" action=" {{route('coletor.acesso')}} ">
+            <form method="post" action=" {{route('acesso.user')}} ">
                         @csrf
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Email</label>
-                            <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                            <label for="Email">Email</label>
+                            <input type="email" name="email" class="form-control" aria-describedby="emailHelp">
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputPassword1">Senha</label>
-                            <input type="password" name="password" class="form-control" id="exampleInputPassword1">
+                            <label for="Password">Senha</label>
+                            <input type="password" name="password" class="form-control">
                         </div>
-                        <button type="submit" class="btn-btn-pryimary">
-                        Entrar
-                        </button>
-                        
-                        <button type="submit" class="btn-btn-pryimary">
+                        <button type="submit" class="btn-btn-pryimary">    
+                           Entrar
+                        </button> 
                         <a href="{{route('cadastro.create')}}">    
                         Cadastro
-                        </a></button>
-                    </form>    
-                </div>    
-            </div>    
+                        </a>                     
+                    </form>   
          </div>  
        </section>
 

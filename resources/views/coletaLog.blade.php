@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -28,8 +27,7 @@
                          {{session('danger')}}   
                         </div>
                     @endif
-                    <!--<form action="/" method="GET">-->
-                    <form action="/lixo" method="POST">
+                    <form action="/logcoleta" method="POST">
                         @csrf
                         <div class="form-group">
                             <label for="exampleInputEmail1">Email</label>
@@ -42,10 +40,7 @@
                         <button type="submit" class="btn-btn-pryimary">
                          Entrar
                         </button>
-                        <button type="submit" class="btn-btn-pryimary"> 
-                        <a href="{{route('cad.create')}}">    
-                         Cadastro
-                        </a></button>
+                        <a href="/">Você é doador? Faça seu Login</a>
                     </form>    
                 </div>    
             </div>    

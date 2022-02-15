@@ -5,18 +5,20 @@ namespace App\Models;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Contracts\Auth\CanResetPassword;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
 use App\Notifications\ResetPassword;
-
+use Spatie\Permission\Traits\HasRoles;
 class User extends Authenticatable
 {
     use HasApiTokens;
     use HasFactory;
     use HasProfilePhoto;
+    use HasRoles;
     use Notifiable;
     use TwoFactorAuthenticatable;
 
@@ -25,12 +27,12 @@ class User extends Authenticatable
      *
      * @var string[]
      */
+    protected $guard = 'users';
     protected $fillable = [
         'name',
         'email',
         'password',
-        //'coletor',
-        //'coleta'
+        'isSeletiva'
     ];
 
     /**
@@ -44,24 +46,9 @@ class User extends Authenticatable
         'two_factor_recovery_codes',
         'two_factor_secret',
     ];
-
     public function setPasswordAttribute($password){
         $this->attributes['password'] = bcrypt($password);
     }
-
-
-
-    /*public function sendPasswordResetNotification($token){
-    $this->notify(new ResetPassword($token));
-    }
-
-    public function getAuthPassword(){
-        return $this->new_password_name;
-    }
-
-
-    */
-
     /**
      * The attributes that should be cast.
      *
@@ -79,5 +66,19 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+    
+    public function selet(){      
+        return $this->hasOne(Selet::class); 
+    }
+    /*public function verify(){
+        $hasSelet = Auth::user()->selet();
+        if($hasSelet == true){
+            return redirect()->route('/coletadash')
+            ->with('msg','ponto de coleta ja cadastrado!');
+        }else{return view(cadColeta);}
+    }*/
+    
+
+
     
 }

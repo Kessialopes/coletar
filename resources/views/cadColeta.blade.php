@@ -7,7 +7,7 @@
             .row{margin-top: 10%;}
             .align-center{margin: 25%;}
         </style>
-        <title>Hi</title>
+        <title>Cadastrar|Ponto de Coleta</title>
     </head>
     <body>
        <section>
@@ -28,33 +28,59 @@
                          {{session('danger')}}   
                         </div>
                     @endif
-                    <form method="post" action=" {{route('cad.store')}} ">
+                    <form method="post" action="{{route('cad.store')}}" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
-                            <label for="exampleInputName1">Nome</label>
-                            <input type="name" name="name" class="form-control" id="exampleInputName1">
+                            <label for="Image">Foto do Ponto de coleta</label>
+                            <input type="file" name="image" class="form-control-file" id="Image">
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Email</label>
-                            <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                            <label for="Name">Nome do Ponto de Coleta</label>
+                            <input type="name" name="name" class="form-control" id="Name">
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputCity1">Cidade</label>
-                            <input type="city" name="city" class="form-control" id="exampleInputCity1">
+                            <label for="City">Cidade</label>
+                            <input type="city" name="city" class="form-control" id="City">
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputNeighborhood1">Bairro</label>
-                            <input type="neighborhood" name="neighborhood" class="form-control" id="exampleInputNeighborhood1" >
+                            <label for="Neighborhood">Bairro</label>
+                            <input type="neighborhood" name="neighborhood" class="form-control" id="Neighborhood" >
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputPassword1">Senha</label>
-                            <input type="password" name="password" class="form-control" id="exampleInputPassword1">
+                            <label for="Street">Rua</label>
+                            <input type="street" name="street" class="form-control" id="Street">
                         </div>
-                        <!--
+                        
                         <div class="form-group">
-                            <label for="ConfirmPassword">Confirmar Senha</label>
-                            <input type="password" name="Confirm Password" class="form-control" id="confirm_password">
-                        </div>    -->         
+                            <label for="Number">Numero</label>
+                            <input type="number" name="number" class="form-control" id="number">
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Telefone</label>
+                            <input type="phone" name="phone" class="form-control" id="phone">
+                        </div>
+                        <div class="form-group">
+                            <label for="info">Expediente</label>
+                            <textarea name="info" class="form-control" id="info" placeholder="Expediente"></textarea> 
+                        </div>
+                        <div class="form-group">
+                            <label for="title">Materiais de coleta:</label> 
+                            <div class="form-group">
+                            <input type="checkbox" name="itens[]" value="Vidro"> Vidro
+                            </div>
+                            <div class="form-group">
+                            <input type="checkbox" name="itens[]" value="Papel"> Papel
+                            </div>
+                            <div class="form-group">
+                            <input type="checkbox" name="itens[]" value="Plastico"> Plastico
+                            </div>
+                            <div class="form-group">
+                            <input type="checkbox" name="itens[]" value="Metal"> Metal
+                            </div>
+                            <div class="form-group">
+                            <input type="checkbox" name="itens[]" value="Organico"> Organico
+                            </div>
+                        </div>            
                         <button type="submit" class="btn-btn-pryimary">
                         Cadastrar
                         </button>
@@ -63,6 +89,5 @@
             </div>    
          </div>  
        </section>
-
     </body>  
 </html>

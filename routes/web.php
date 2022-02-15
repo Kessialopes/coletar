@@ -13,40 +13,50 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\SeletController;
-//pagina inicial
-Route::get('/',[UserController::class,'inicio'])->name('inicio.page');
-Route::post('/acesso',[UserController::class,'acesso'])
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\MapController;
+use App\Http\Controllers\MailController;
+//PAGINA INICIAL
+Route::get('/',[LoginController::class,'inicio'])->name('inicio.page');
+Route::get('/logDoador',[LoginController::class,'logdonate']);
+Route::post('/acesso',[LoginController::class,'userlog'])
 ->name('acesso.user');
-Route::get('/logout',[UserController::class,'logout'])
+Route::get('/logout',[loginController::class,'logout'])
 ->name('logout');
-//ALTERAR SENHA//solicitação
-Route::get('/forgot',[UserController::class,'forgotPass'])
-->name('esqueci.senha');
-Route::post('/forgot',[UserController::class,'changePass'])
-->name('mudar.senha');
-
-
 //CADASTRO
 Route::get('/cadastro',[UserController::class,'create'])
 ->name('cadastro.create');
 Route::post('/cadastro',[UserController::class,'store'])
 ->name('cadastro.store');
+//SENHA ATUALIZAÇÃO
+Route::get('/mail',function(){
+	$user = new stdClass();
+	$user->name = 'Otavio';
+	$user->email = 'pedro.v3cf@gmail.com';
+	//return new \App\Mail\sendMail($user);
+	\Illuminate\Support\Facades\Mail::send(new \App\Mail\sendMail($user));
+});
 //DASHBOARD
 Route::get('/dashboard',[UserController::class,'dashboard'])
-->middleware('auth')->name('dashboard');
-
+->middleware('auth')->name('dashboard'); 
 //*******************COLETA SELETIVA*********************************
 //LOGIN
-Route::get('/lixao',[SeletController::class,'painel']);
-Route::post('/lixo',[SeletController::class,'entrada']);
-//Route::get('/seletiva',[SeletController::class,'painel'])->name('coleta.entrar');
-//Route::post('/seletiva',[SeletController::class,'acesso'])->name('coleta.acesso');
-Route::get('/logout',[SeletController::class,'sair'])->name('sair');
+Route::get('/logColeta',[LoginController::class,'painel']);
+Route::post('/logcoleta',[LoginController::class,'seletlog']);
 //CADASTRO
-Route::get('/cadcoleta',[SeletController::class,'create'])->name('cad.create');
+Route::get('/cadcoleta',[SeletController::class,'create'])
+->middleware('isSeletiva')->name('cad.create');
 Route::post('/cadcoleta',[SeletController::class,'store'])->name('cad.store');
+// EDIÇÃO DOS PONTOS DE COLETA
+Route::get('/seletiva/edit/{id}',[SeletController::class,'edit'])
+->middleware('isSeletiva')->name('editar');
+Route::put('/seletiva/update/{id}',[SeletController::class,'update'])
+->middleware('isSeletiva')->name('update');
 //DASHBOARD
-    Route::get('/coletadash',[SeletController::class,'coletadash'])
-    ->middleware('auth')->name('coletadash');
-
-
+Route::get('/coletadash',[SeletController::class,'coletadash'])
+->middleware('isSeletiva')->name('coletadash');
+//****************************ROTAS DO MAPA***************************************
+Route::get('/Home',[MapController::class,'index'])
+->middleware('auth');
+Route::get('/Home/seletiva/{id}',[MapController::class,'show'])
+->middleware('auth')->name('mostrar');

@@ -7,7 +7,7 @@
             .row{margin-top: 10%;}
             .align-center{margin: 25%;}
         </style>
-        <title>Hi</title>
+        <title>Cadastro | Coleta Lagos</title>
     </head>
     <body>
        <section>
@@ -39,6 +39,13 @@
                             <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
                         </div>
                         <div class="form-group">
+                            <label for="title">Você é Ponto de Coleta?</label>
+                            <select name="isSeletiva" id="isSeletiva" class="form-control">
+                                <option value="1">Não</option>
+                                <option value="2">Sim</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
                             <label for="exampleInputPassword1">Senha</label>
                             <input type="password" name="password" class="form-control" id="exampleInputPassword1">
                         </div>
@@ -58,3 +65,12 @@
 
     </body>  
 </html>
+<!--
+    <div class="form-group">
+           <label for="title">O usuario é coleta seletiva?</label>
+           <select name="private" id="private" class="form-control">
+              <option value="0">Não</option>
+              <option value="1">Sim</option>
+           </select>
+
+-->

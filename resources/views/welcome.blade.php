@@ -4,64 +4,54 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <style>
-            .row{margin-top: 10%;}
-            .align-center{margin: 25%;}
+            .info-coleta{
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                padding: 80px;
+                border-radius: 15px;
+            }
+            ul{
+             float: right;
+             list-style: none;
+             padding: 8px;
+             display: flex;
+             background: white;
+             }
+            li{
+             margin-right: 80px;
+            }
+            a{
+             color: mediumspringgreen;
+             text-decoration: none;
+             transition: 1s;
+            }
+            a:hover{
+            color: turquoise;
+            size: 5px;
+            }
         </style>
-        <title>Hi</title>
+        <title>Coleta Lagos</title>
     </head>
     <body>
+        <header>
+            <div class="topnav">
+                <ul>
+                    <li><a href="/cadastro">Cadastre-se</a></li>
+                    <li><a href="/logColeta">Login Ponto de coleta</a></li>
+                    <li><a href="/logDoador">Login Doador</a></li>
+                </ul> 
+            </div>
+        </header>
        <section>
-         <div class="container">
-            <div class="row">  
-                <div class="col-md-6 offset-md-3">
-                    @if($errors->any())
-                     <div class="alert alert-danger">
-                        <ul>
-                            @foreach($errors->all() as $error)
-                                <li>{{$error}}</li>
-                            @endforeach
-                        </ul> 
-                     </div>
-                    @endif
-                    @if(session('danger'))
-                        <div class="alert alert-danger">
-                         {{session('danger')}}   
-                        </div>
-                    @endif
-                    <div>
-                        <button type="submit" class="btn-btn-pryimary">
-                        <a href="/lixao">   
-                        Coleta Seletiva
-                        </a></button>
-                        </div>
-                        <!--<form action="/" method="GET">-->
-                    <form method="post" action=" {{route('acesso.user')}} ">
-                        @csrf
-                        
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Email</label>
-                            <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputPassword1">Senha</label>
-                            <input type="password" name="password" class="form-control" id="exampleInputPassword1">
-                        </div>
-                        <button type="submit" class="btn-btn-pryimary">    
-                           Entrar
-                        </button> 
-                        <button type="submit" class="btn-btn-pryimary">
-                        <a href="{{route('cadastro.create')}}">    
-                        Cadastro
-                        </a></button>
-                        <div>
-                         <a href="{{route('esqueci.senha')}}">    
-                           Esqueci minha Senha
-                         </a>
-                        </div>
-                    </form>   
-                </div>    
-            </div>    
-         </div>  
+            <div class="info-coleta"> 
+                <p><h1 style="color:springgreen;">Bem-vindo ao Coleta Lagos</h1></p>
+                <p>o melhor site de mapeamento de
+                 pontos de coleta da região dos lagos</p>
+                <p>Informações sobre esta iniciativa</p>
+            </div>     
        </section>
     </body>  
 </html>
+                        

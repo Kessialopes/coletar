@@ -40,10 +40,6 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
-        'selet' => [
-            'driver' => 'session',
-            'provider' => 'selets',
-        ]
     ],
 
     /*
@@ -68,10 +64,6 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
         ],
-        'selets' => [
-            'driver' => 'eloquent',
-            'model' => App\Models\Selet::class,
-        ]
 
 
         // 'users' => [
@@ -98,13 +90,6 @@ return [
     'passwords' => [
         'users' => [
             'provider' => 'users',
-            'table' => 'password_resets',
-            'expire' => 60,
-            'throttle' => 60,
-        ],
-
-        'selets' => [
-            'provider' => 'selets',
             'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,
