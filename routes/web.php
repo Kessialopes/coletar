@@ -28,14 +28,14 @@ Route::get('/cadastro',[UserController::class,'create'])
 ->name('cadastro.create');
 Route::post('/cadastro',[UserController::class,'store'])
 ->name('cadastro.store');
-//SENHA ATUALIZAÇÃO
-Route::get('/mail',function(){
-	$user = new stdClass();
-	$user->name = 'Otavio';
-	$user->email = 'pedro.v3cf@gmail.com';
+//SENHA ATUALIZAÇÃO/EMAIL //INCOMPLETA
+/*Route::get('/mail',function(){
+	$user = user();
+	$user->name = 'name';
+	$user->email = 'email';
 	//return new \App\Mail\sendMail($user);
 	\Illuminate\Support\Facades\Mail::send(new \App\Mail\sendMail($user));
-});
+})*/
 //DASHBOARD
 Route::get('/dashboard',[UserController::class,'dashboard'])
 ->middleware('auth')->name('dashboard'); 

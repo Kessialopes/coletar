@@ -19,8 +19,7 @@ class sendMail extends Mailable
      *
      * @return void
      */
-    /*public function __construct(User $user)//USAR COM MODEL*/
-    public function __construct(\stdClass $user)
+    public function __construct(User $user)
     {
         $this->user = $user;
     }
